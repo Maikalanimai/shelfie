@@ -8,7 +8,7 @@ class Product extends React.Component {
         <h3>Product: {this.props.name}</h3>
         <h4>Price: ¥{this.props.price}</h4>
         <button onClick={() =>this.props.delete(this.props.id)}>Delete</button>
-        <button onClick={() => this.props.toggleEditFn()}>Edit</button>
+        <button onClick={() => this.props.toggleEditFn(this.props.id)}>Edit</button>
       </div>
     );
   }

@@ -11,6 +11,7 @@ class App extends React.Component {
     this.state = {
       inventory: [],
       editToggled: false,
+      toggleId: null,
     };
     this.delete = this.delete.bind();
     this.toggleEditFn = this.toggleEditFn.bind();
@@ -37,28 +38,35 @@ class App extends React.Component {
       .delete(`/api/inventory/${id}`)
       .then(res => this.updateInventory());
   };
-  toggleEditFn = () => {
+  toggleEditFn = (id) => {
     if (this.state.editToggled === false) {
       this.setState({
-        editToggled: true
+        editToggled: true,
+        toggleId: id
       });
     } else {
       this.setState({
-        editToggled: false
+        editToggled: false,
+        toggleId: null
       });
     }
   };
   render() {
     return (
       <div className="App">
-        <button onClick={() => this.updateInventory()}>devtools</button>
         <Header />
-        <Form updateInventory={this.updateInventory} />
+        <main>
         <Dashboard
           toggleEditFn={this.toggleEditFn}
           delete={this.delete}
           inventory={this.state.inventory}
         />
+        <Form inventory={this.state.inventory}
+        editToggled={this.state.editToggled}
+        toggleEditFn={this.toggleEditFn}
+        updateInventory={this.updateInventory}
+        toggleId={this.toggleId} />
+        </main>
       </div>
     );
   }

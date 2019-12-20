@@ -1,0 +1,20 @@
+.form {
+    background-color: #3ad886;
+    height: 50vh;
+    margin: 10%;
+    display: grid;
+    grid-template-rows: 3fr 1fr 1fr 1fr;
+    padding-bottom: 1vh;
+    align-items: center;
+    justify-content: center;
+}
+
+input {
+    margin: 5%;
+}
+
+.buttons{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 0 5%;
+}
