@@ -36,14 +36,15 @@ class App extends React.Component {
   delete = id => {
     return axios
       .delete(`/api/inventory/${id}`)
-      .then(res => this.updateInventory());
+      .then(() => this.updateInventory());
   };
-  toggleEditFn = (id) => {
+  toggleEditFn=(newId)=>  {
+    // ! why is newId not passed up from product?
     if (this.state.editToggled === false) {
       this.setState({
         editToggled: true,
-        toggleId: id
-      });
+        toggleId: newId
+      },console.log(this.state.toggleId));
     } else {
       this.setState({
         editToggled: false,

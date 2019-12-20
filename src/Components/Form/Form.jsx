@@ -9,7 +9,7 @@ export default class Form extends Component {
       name: "",
       price: 0,
       img: "",
-      id: null
+      id: 0
     };
   }
   handleChange(e, key) {
@@ -44,9 +44,8 @@ export default class Form extends Component {
     this.clear();
   }
 
-  update = () => {
-    axios
-      .put(`/api/inventory/${this.state.id}`, {
+  update = () => {axios
+      .put(`/api/inventory/${this.props.toggleId}`, {
         name: this.state.name,
         price: this.state.price,
         img: this.state.img
@@ -61,7 +60,7 @@ export default class Form extends Component {
     if (toggle === false) {
       return (
         <div className={'form'}>
-          <img src={this.state.img} alt="product" />
+          <img src={this.state.img} alt="Your product" />
           <input
             className="url"
             onChange={e => this.handleChange(e, "img")}
@@ -94,7 +93,7 @@ export default class Form extends Component {
       return (
         <div className={'form'}>
             
-          <img src={this.state.img} alt="product" />
+          <img src={this.state.img} alt="Your product" />
           <input
             className="url"
             onChange={e => this.handleChange(e, "img")}
