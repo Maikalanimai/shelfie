@@ -7,6 +7,11 @@ const ctrl = require("./controller");
 
 app.use(express.json());
 
+app.get('/api/inventory', ctrl.getProducts)
+app.post('/api/inventory', ctrl.postProduct)
+app.delete('/api/inventory/:id', ctrl.deleteProduct)
+app.put('/api/inventory/:id', ctrl.updateProduct)
+
 massive(CONNECTION_STRING).then(db => {
   app.set("db", db);
   app.listen(SERVER_PORT, () =>
